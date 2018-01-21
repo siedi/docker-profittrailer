@@ -1,0 +1,13 @@
+server.port = 8081
+telegram.botToken = ${TELEGRAM_BOTTOKEN} 
+telegram.chatId = ${TELEGRAM_CHATID}
+trading.exchange = ${TRADING_EXCHANGE}
+server.timeZoneOffset = ${SERVER_TIMEZONEOFFSET}
+server.sitename = ${SERVER_SITENAME}
+server.password = ${SERVER_PASSWORD}
+trading.logHistory = ${TRADING_LOGHISTORY}
+default_apiKey = ${APIKEY}
+default_apiSecret = ${APISECRET}
+trading_apiKey = ${TRADING_APIKEY}
+trading_apiSecret = ${TRADING_APISECRET}
+server.enableConfig = true

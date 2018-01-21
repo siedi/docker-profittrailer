@@ -1,0 +1,40 @@
+version: '3'
+services:
+  profttrailer1:
+    build: ./
+    env_file:
+      - ./pt1/pt.env
+    environment:
+      - VIRTUAL_HOST=pt1.yourhostname.com
+    volumes:
+      - "./pt1/ProfitTrailerData.json:/opt/ProfitTrailer/ProfitTrailerData.json"
+      - "./pt1/configuration.properties:/opt/ProfitTrailer/configuration.properties"
+      - "./pt1/trading/DCA.properties:/opt/ProfitTrailer/trading/DCA.properties"
+      - "./pt1/trading/INDICATORS.properties:/opt/ProfitTrailer/trading/INDICATORS.properties"
+      - "./pt1/trading/PAIRS.properties:/opt/ProfitTrailer/trading/PAIRS.properties"
+    restart: always
+
+  profttrailer2:
+    build: ./
+    env_file:
+      - ./pt2/pt.env
+    environment:
+      - VIRTUAL_HOST=pt2.yourhostname.com
+    volumes:
+      - "./pt2/ProfitTrailerData.json:/opt/ProfitTrailer/ProfitTrailerData.json"
+      - "./pt2/configuration.properties:/opt/ProfitTrailer/configuration.properties"
+      - "./pt2/trading/DCA.properties:/opt/ProfitTrailer/trading/DCA.properties"
+      - "./pt2/trading/INDICATORS.properties:/opt/ProfitTrailer/trading/INDICATORS.properties"
+      - "./pt2/trading/PAIRS.properties:/opt/ProfitTrailer/trading/PAIRS.properties"
+    restart: always
+
+  nginx-proxy:
+    image: jwilder/nginx-proxy
+    ports:
+      # - "8445:443"
+      - "8080:80"
+    volumes:
+      #- "./nginx/htpasswd:/etc/nginx/htpasswd"
+      #- "./nginx/certs:/etc/nginx/certs"
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+    restart: always
