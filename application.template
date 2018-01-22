@@ -1,6 +1,7 @@
 server.port = 8081
 telegram.botToken = ${TELEGRAM_BOTTOKEN} 
 telegram.chatId = ${TELEGRAM_CHATID}
+telegram.postNewOrders = true
 trading.exchange = ${TRADING_EXCHANGE}
 server.timeZoneOffset = ${SERVER_TIMEZONEOFFSET}
 server.sitename = ${SERVER_SITENAME}
